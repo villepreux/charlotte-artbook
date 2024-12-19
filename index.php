@@ -592,7 +592,7 @@ $url   = "//villepreux.net/charlotte/artbook";
         <meta property="og:title"           content="<?= $title ?>">
         <meta property="og:description"     content="<?= $desc ?>">
         <meta property="og:site_name"       content="villapirorum.netlify.app">
-        <meta property="og:image"           content="artbook-villepreux-charlotte.png">
+        <meta property="og:image"           content="media/artbook-villepreux-charlotte.png">
         <meta property="og:url"             content="<?= $url ?>">
         <meta property="og:type"            content="website">
 
@@ -611,14 +611,14 @@ $url   = "//villepreux.net/charlotte/artbook";
         <meta name="twitter:url"            content="<?= $url ?>">
         <meta name="twitter:title"          content="<?= $title ?>">
         <meta name="twitter:description"    content="<?= $desc ?>">
-        <meta name="twitter:image"          content="artbook-villepreux-charlotte.png">
+        <meta name="twitter:image"          content="media/artbook-villepreux-charlotte.png">
 
-        <meta name="application-name"       content="artbook-villepreux-charlotte">
+        <meta name="application-name"       content="media/artbook-villepreux-charlotte">
 
         <meta name="msapplication-TileColor" content="#000">
-        <meta name="msapplication-TileImage" content="artbook-villepreux-charlotte.png">
+        <meta name="msapplication-TileImage" content="media/artbook-villepreux-charlotte.png">
 
-        <link rel="icon"        href="artbook-villepreux-charlotte-portrait-icon.png" type="image/png">
+        <link rel="icon"        href="media/artbook-villepreux-charlotte-portrait-icon.png" type="image/png">
         <link rel="manifest"    href="manifest.json">
 
     </head>
@@ -644,7 +644,7 @@ $url   = "//villepreux.net/charlotte/artbook";
             "@type": "Organization",
             "name": "<?= $desc ?>",
             "url": "\/\/villepreux.net\/charlotte\/artbook",
-            "logo": "artbook-villepreux-charlotte.png.jpg"
+            "logo": "media/artbook-villepreux-charlotte.png"
         }
         </script>
 

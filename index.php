@@ -29,7 +29,7 @@ $url   = "//villepreux.net/charlotte/artbook";
         <title><?= $title ?></title>
 
         <style>
-            <?php foreach (file("css/all.css") as $line) echo "            $line"; ?>
+            <?php foreach (@file("css/all.css") as $line) echo "            $line"; ?>
 
         </style>
 
@@ -117,16 +117,16 @@ $url   = "//villepreux.net/charlotte/artbook";
             <a href="#"><h1 id="artbook">Charlotte's Artbook</h1></a>
             <nav>
                 <form>
-                    <label for="filter-oil">    <input type="checkbox" id="filter-oil"    checked></input> Oil    </label>
-                    <label for="filter-pencil"> <input type="checkbox" id="filter-pencil" checked></input> Pencil </label>
-                    <label for="filter-color">  <input type="checkbox" id="filter-color"  checked></input> Color  </label>
-                    <label for="filter-b-n-w">  <input type="checkbox" id="filter-b-n-w"  checked></input> B&W    </label>
+                    <label for="filter-alcohol"> <input type="checkbox" id="filter-alcohol" checked></input> Alcool </label>
+                    <label for="filter-pencil">  <input type="checkbox" id="filter-pencil"  checked></input> Pencil </label>
+                    <label for="filter-color">   <input type="checkbox" id="filter-color"   checked></input> Color  </label>
+                    <label for="filter-b-n-w">   <input type="checkbox" id="filter-b-n-w"   checked></input> B&W    </label>
                 </form>
             </nav>
             
         </header>
 
-        <main class="content" id="main">
+        <main>
 
             <section id="gallery">
 
@@ -134,28 +134,28 @@ $url   = "//villepreux.net/charlotte/artbook";
 
                     foreach ([
 
-                        "2024-05-10" => [ [ "tags" => [ "pencil", "b-n-w" ], ] ], 
-                        "2024-08-01" => [ [ "tags" => [ "pencil", "b-n-w" ], ] ], 
-                        "2024-08-02" => [ [ "tags" => [ "pencil", "b-n-w" ], ] ], 
-                        "2024-08-03" => [ [ "tags" => [ "pencil", "b-n-w" ], ] ], 
-                        "2024-08-04" => [ [ "tags" => [ "pencil", "color" ], ] ], 
-                        "2024-08-05" => [ [ "tags" => [ "pencil", "color" ], ] ], 
-                        "2024-08-06" => [ [ "tags" => [ "pencil", "b-n-w" ], ] ], 
-                        "2024-08-07" => [ [ "tags" => [ "pencil", "b-n-w" ], ] ], 
-                        "2024-08-08" => [ [ "tags" => [ "pencil", "color" ], ] ], 
-                        "2024-08-09" => [ [ "tags" => [ "pencil", "b-n-w" ], ] ], 
-                        "2024-08-10" => [ [ "tags" => [ "pencil", "color" ], ] ], 
-                        "2024-08-11" => [ [ "tags" => [ "pencil", "color" ], ] ], 
-                        "2024-08-12" => [ [ "tags" => [ "pencil", "color" ], "file" => "*-a",  ], [ "tags" => [ "pencil", "color" ], "file" => "*-b", ] ],
-                        "2024-08-13" => [ [ "tags" => [ "pencil", "color" ], ] ],
-                        "2024-08-14" => [ [ "tags" => [ "pencil", "color" ], ] ],
-                        "2024-08-15" => [ [ "tags" => [ "pencil", "color" ], ] ],
-                        "2024-08-16" => [ [ "tags" => [ "pencil", "color" ], ] ],
-                        "2024-08-17" => [ [ "tags" => [ "pencil", "color" ], ] ],
-                        "2024-08-18" => [ [ "tags" => [ "pencil", "b-n-w" ], "file" => "*-a",  ], [ "tags" => [ "pencil", "b-n-w" ], "file" => "*-b", ] ],
-                        "2024-08-19" => [ [ "tags" => [ "pencil", "b-n-w" ], "file" => "*-a",  ], [ "tags" => [ "pencil", "b-n-w" ], "file" => "*-b", ] ],
-                        "2024-08-20" => [ [ "tags" => [ "pencil", "color" ], "file" => "*-a",  ], [ "tags" => [ "pencil", "b-n-w" ], "file" => "*-b", ] ],
-                        "2024-12-10" => [ [ "tags" => [ "oil",    "color" ], "file" => "*-a",  ], [ "tags" => [ "oil",    "color" ], "file" => "2024-12-11-b", ] ],
+                        "2024-05-10" => [ [ "tags" => [ "pencil",  "b-n-w" ], ] ], 
+                        "2024-08-01" => [ [ "tags" => [ "pencil",  "b-n-w" ], ] ], 
+                        "2024-08-02" => [ [ "tags" => [ "pencil",  "b-n-w" ], ] ], 
+                        "2024-08-03" => [ [ "tags" => [ "pencil",  "b-n-w" ], ] ], 
+                        "2024-08-04" => [ [ "tags" => [ "pencil",  "color" ], ] ], 
+                        "2024-08-05" => [ [ "tags" => [ "pencil",  "color" ], ] ], 
+                        "2024-08-06" => [ [ "tags" => [ "pencil",  "b-n-w" ], ] ], 
+                        "2024-08-07" => [ [ "tags" => [ "pencil",  "b-n-w" ], ] ], 
+                        "2024-08-08" => [ [ "tags" => [ "pencil",  "color" ], ] ], 
+                        "2024-08-09" => [ [ "tags" => [ "pencil",  "b-n-w" ], ] ], 
+                        "2024-08-10" => [ [ "tags" => [ "pencil",  "color" ], ] ], 
+                        "2024-08-11" => [ [ "tags" => [ "pencil",  "color" ], ] ], 
+                        "2024-08-12" => [ [ "tags" => [ "pencil",  "color" ], "file" => "*-a",  ], [ "tags" => [ "pencil", "color" ], "file" => "*-b", ] ],
+                        "2024-08-13" => [ [ "tags" => [ "pencil",  "color" ], ] ],
+                        "2024-08-14" => [ [ "tags" => [ "pencil",  "color" ], ] ],
+                        "2024-08-15" => [ [ "tags" => [ "pencil",  "color" ], ] ],
+                        "2024-08-16" => [ [ "tags" => [ "pencil",  "color" ], ] ],
+                        "2024-08-17" => [ [ "tags" => [ "pencil",  "color" ], ] ],
+                        "2024-08-18" => [ [ "tags" => [ "pencil",  "b-n-w" ], "file" => "*-a",  ], [ "tags" => [ "pencil",  "b-n-w" ], "file" => "*-b", ] ],
+                        "2024-08-19" => [ [ "tags" => [ "pencil",  "b-n-w" ], "file" => "*-a",  ], [ "tags" => [ "pencil",  "b-n-w" ], "file" => "*-b", ] ],
+                        "2024-08-20" => [ [ "tags" => [ "pencil",  "color" ], "file" => "*-a",  ], [ "tags" => [ "pencil",  "b-n-w" ], "file" => "*-b", ] ],
+                        "2024-12-10" => [ [ "tags" => [ "alcohol", "color" ], "file" => "*-a",  ], [ "tags" => [ "alcohol", "color" ], "file" => "2024-12-11-b", ] ],
          
                         ] as $id => $pages) {
 
@@ -169,7 +169,12 @@ $url   = "//villepreux.net/charlotte/artbook";
                         $name = isset($page["file"]) ? str_replace("*", $id, $page["file"]) : $id;
                         $tags = array_merge([ "all" ], $page["tags"]);
             
-                        ?><img loading="lazy" width="<?= $w ?>px" height="<?= $h ?>px" style="--width: <?= $w ?>; --height: <?= $h ?>;" srcset="media/800/<?= $name ?>.avif 400w, media/1600/<?= $name ?>.avif 800w, media/3200/<?= $name ?>.avif 1600w" src="media/800/<?= $name ?>.avif" data-tags="<?= implode(" ", $tags) ?>"><?php
+                        ?><img <?php
+                            ?>loading="lazy" <?php
+                            ?>width="<?= $w ?>px" height="<?= $h ?>px" style="--width: <?= $w ?>; --height: <?= $h ?>;" <?php if (false) {
+                            ?>srcset="media/800/<?= $name ?>.avif 400w, media/1600/<?= $name ?>.avif 800w, media/3200/<?= $name ?>.avif 1600w" <?php }
+                            ?>src="media/800/<?= $name ?>.avif" <?php
+                            ?>data-tags="<?= implode(" ", $tags) ?>"><?php
                     }
 
                 ?></a>
@@ -189,5 +194,14 @@ $url   = "//villepreux.net/charlotte/artbook";
         <a href="https://github.com/villepreux"          target="_blank" hidden="hidden" rel="me">Github   </a>
 
     </body>
+
+    <script>
+
+        addEventListener("DOMContentLoaded", (event) => {
+            <?php foreach (@file("js/app.js") as $line) echo "            $line"; ?>
+
+        });
+
+    </script>
 
 </html>

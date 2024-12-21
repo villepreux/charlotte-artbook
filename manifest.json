@@ -1,0 +1,33 @@
+{
+    "id": "charlotte-artbook",
+    "name": "Artbook - Villepreux Charlotte",
+    "short_name": "charlotte-artbook",
+    "description": "Charlotte Villepreux's Artbook",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "screenshots": [
+        {
+            "src": "media\/3200\/\/2024-12-10-a.avif",
+            "sizes": "1536x2477",
+            "type": "image\/avif"
+        }
+    ],
+    "start_url": "\/\/villepreux.net\/charlotte\/artbook",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "launch_handler": {
+        "client_mode": [
+            "navigate-existing",
+            "auto"
+        ]
+    },
+    "icons": [
+        {
+            "src": "media\/artbook-villepreux-charlotte-portrait-icon.png",
+            "sizes": "512x512",
+            "type": "image\/png",
+            "density": "0.75",
+            "purpose": "any"
+        }
+    ]
+}

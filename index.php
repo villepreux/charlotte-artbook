@@ -159,7 +159,7 @@ $url   = "//villepreux.net/charlotte/artbook";
          
                         ] as $id => $pages) {
 
-                ?><a id="<?= $id ?>" href="#<?= $id ?>"><?php
+                ?><button popovertarget="pop-<?= $id ?>"><?php
 
                     $w = 1 == count($pages) ? 344 : 172;
                     $h = 256;
@@ -175,9 +175,29 @@ $url   = "//villepreux.net/charlotte/artbook";
                             ?>srcset="media/800/<?= $name ?>.avif 400w, media/1600/<?= $name ?>.avif 800w, media/3200/<?= $name ?>.avif 1600w" <?php }
                             ?>src="media/800/<?= $name ?>.avif" <?php
                             ?>data-tags="<?= implode(" ", $tags) ?>"><?php
+                        
                     }
 
-                ?></a>
+                ?></button><div popover id="pop-<?= $id ?>"><?php
+
+                    $w = 1 == count($pages) ? 344 : 172;
+                    $h = 256;
+
+                    foreach ($pages as $page) {
+
+                        $name = isset($page["file"]) ? str_replace("*", $id, $page["file"]) : $id;
+                        $tags = array_merge([ "all" ], $page["tags"]);
+            
+                        ?><img <?php
+                            ?>loading="lazy" <?php
+                            ?>width="<?= $w ?>px" height="<?= $h ?>px" style="--width: <?= $w ?>; --height: <?= $h ?>;" <?php if (false) {
+                            ?>srcset="media/800/<?= $name ?>.avif 400w, media/1600/<?= $name ?>.avif 800w, media/3200/<?= $name ?>.avif 1600w" <?php }
+                            ?>src="media/3200/<?= $name ?>.avif" <?php
+                            ?>data-tags="<?= implode(" ", $tags) ?>"><?php
+                        
+                    }
+
+                ?></div>
                 <?php } ?>
 
             </section>

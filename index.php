@@ -128,7 +128,7 @@ $url   = "//villepreux.net/charlotte/artbook";
 
         <main>
 
-            <section id="gallery">
+            <section class="album h-feed">
 
                 <?php
 
@@ -159,46 +159,28 @@ $url   = "//villepreux.net/charlotte/artbook";
          
                         ] as $id => $pages) {
 
-                ?><button popovertarget="pop-<?= $id ?>"><?php
+                            foreach ($pages as $page) {
+        
+                                $w = 1 == count($pages) ? 344 : 172;
+                                $h = 256;
+    
+                                $name = isset($page["file"]) ? str_replace("*", $id, $page["file"]) : $id;
+                                $tags = array_merge([ "all" ], $page["tags"]);
+                    
+                ?><a class="illustration h-entry" href="#illustration-<?= $name ?>" id="thumb-<?= $name ?>" style="--width: <?= $w ?>; --height: <?= $h ?>"><?php
 
-                    $w = 1 == count($pages) ? 344 : 172;
-                    $h = 256;
+                    ?><img <?php
+                        ?>id="illustration-<?= $name ?>" <?php
+                        ?>loading="lazy" <?php
+                        ?>decoding="async" <?php
+                        ?>width="<?= $w ?>px" height="<?= $h ?>px" style="--width: <?= $w ?>; --height: <?= $h ?>;" <?php /*
+                        ?>srcset="media/800/<?= $name ?>.avif 400w, media/1600/<?= $name ?>.avif 800w, media/3200/<?= $name ?>.avif 1600w" <?php */
+                        ?>src="media/800/<?= $name ?>.avif" <?php
+                        ?>alt="Charlotte Villepreux's Illustration"<?php
+                        ?>data-tags="<?= implode(" ", $tags) ?>"><?php
 
-                    foreach ($pages as $page) {
-
-                        $name = isset($page["file"]) ? str_replace("*", $id, $page["file"]) : $id;
-                        $tags = array_merge([ "all" ], $page["tags"]);
-            
-                        ?><img <?php
-                            ?>loading="lazy" <?php
-                            ?>width="<?= $w ?>px" height="<?= $h ?>px" style="--width: <?= $w ?>; --height: <?= $h ?>;" <?php if (false) {
-                            ?>srcset="media/800/<?= $name ?>.avif 400w, media/1600/<?= $name ?>.avif 800w, media/3200/<?= $name ?>.avif 1600w" <?php }
-                            ?>src="media/800/<?= $name ?>.avif" <?php
-                            ?>data-tags="<?= implode(" ", $tags) ?>"><?php
-                        
-                    }
-
-                ?></button><div popover id="pop-<?= $id ?>"><?php
-
-                    $w = 1 == count($pages) ? 344 : 172;
-                    $h = 256;
-
-                    foreach ($pages as $page) {
-
-                        $name = isset($page["file"]) ? str_replace("*", $id, $page["file"]) : $id;
-                        $tags = array_merge([ "all" ], $page["tags"]);
-            
-                        ?><img <?php
-                            ?>loading="lazy" <?php
-                            ?>width="<?= $w ?>px" height="<?= $h ?>px" style="--width: <?= $w ?>; --height: <?= $h ?>;" <?php if (false) {
-                            ?>srcset="media/800/<?= $name ?>.avif 400w, media/1600/<?= $name ?>.avif 800w, media/3200/<?= $name ?>.avif 1600w" <?php }
-                            ?>src="media/3200/<?= $name ?>.avif" <?php
-                            ?>data-tags="<?= implode(" ", $tags) ?>"><?php
-                        
-                    }
-
-                ?></div>
-                <?php } ?>
+                ?></a>
+                <?php } } ?>
 
             </section>
 

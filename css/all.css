@@ -14,6 +14,8 @@
     }                            
 }
 
+@property --album-max-row-height-px { syntax: "<length>"; initial-value: 0px; inherits: false; }
+
 @media screen {
 
     @layer artbook {
@@ -51,99 +53,88 @@
                 padding-block:  1rem;
                 padding-inline: 1rem;
 
-                #gallery {
+                .album {
 
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 1rem;
-                    align-items: stretch;
-
-                    button { 
-
-                        color: inherit;
-
-                        scroll-margin-top: .5em;
-
-                        border:     none;
-                        margin:     0;
-                        padding:    0;
-                        background: none;
-
-                        display:            flex;
-                        justify-content:    center;
-                        max-height:         calc(100vb - 1rem);
-                        max-width:          calc(100vi - 1rem);
-                        text-align:         center;
-                        gap:                1rem;
-
-                        img {
-
-                            border:     0.25rem solid white; 
-                            outline:    0.25rem solid black;
-                            max-height: inherit;
-                        }
-                                                            
-                        :has(#filter-oil:not(:checked))     &:has([data-tags~="oil"])    { display: none; }
-                        :has(#filter-pencil:not(:checked))  &:has([data-tags~="pencil"]) { display: none; }
-                        :has(#filter-color:not(:checked))   &:has([data-tags~="color"])  { display: none; }
-                        :has(#filter-b-n-w:not(:checked))   &:has([data-tags~="b-n-w"])  { display: none; }
+                    --row-height-min: 240;
+                    --row-height-max: 480;
+                
+                    --gap:          1rem;
+                  
+                    --album-max-row-height-px:       calc(100vh - 2 * var(--gap));
+                    --album-max-row-height-unitless: tan(atan2(var(--album-max-row-height-px), 1px));
+                
+                    --row-height:   min(var(--album-max-row-height-unitless), var(--row-height-min));
+                
+                    position:       relative;
+                    display:        flex;
+                    flex-wrap:      wrap;
+                    gap:            var(--gap);
+                    padding:        var(--gap);
+                
+                    &::after {
+                
+                        content:    '';
+                        flex-grow:  999999999;
+                    }
+                                  
+                    a {
                         
-                        &:has(img:nth-child(2)) {
-
-                            > img {
-
-                                width:  min(calc(calc(100vb - 1rem) * var(--width) / var(--height)), calc(50% - .5rem));
-                                height: 100%;
-                            }
-                        }
-
-                        :has(:popover-open) & {
-
+                        position:       relative;
+                        display:        block;
+                        flex-grow:      calc(var(--row-height)       * var(--width) / var(--height));
+                        width:          calc(var(--row-height) * 1px * var(--width) / var(--height));
+                        height:         auto;
+                        max-width:      calc(100vw - 2 * var(--gap));
+                        margin:         0;
+                      
+                        cursor: zoom-in;
+                      
+                        scroll-margin-top: var(--gap);
+                      
+                        &:before {
+                
+                            content:        "";
+                            display:        block;
+                            padding-bottom: calc(100% * var(--height) / var(--width));
                             pointer-events: none;
                         }
-                    }
-
-                    [popover] {
-                        
-                        padding:    1rem;
-                        border:     none;
-                        background: none;
-
-                        &::backdrop {
-
-                            background-color: color-mix(in srgb, Canvas 80%, transparent);
-                            backdrop-filter:  blur(4px);
-                        }
-                            
-                        &:popover-open { 
-
-                            display:            flex;
-                            justify-content:    center;
-                            text-align:         center;
-                            gap:                1rem;
-                            grid-column:        1 / -1;
-                            max-width:          100vi;
-                            max-height:         100vb;
-
-                            img {
-
-                                border:     0.25rem solid white; 
-                                outline:    0.25rem solid black;
-                                max-height: inherit;
+                      
+                        img {
+                
+                            position:       absolute;
+                            top:            0;
+                            width:          100%;
+                            vertical-align: bottom;
+                            max-width:      100%;
+                            max-height:     100%;
+                            pointer-events: none;
                           
-                                width:      auto;
-                                height:     auto;
-                                max-width:  calc(100vi - 2rem);
-                                max-height: calc(100vb - 2rem);
-                            }
-
-                            &:has(img:nth-child(2)) {
-
-                                > img {
-
-                                    width:  min(calc(calc(100vb - 1rem) * var(--width) / var(--height)), calc(50% - .5rem));
-                                    height: 100%;
-                                }
+                            filter:         drop-shadow(1px 1px 4px #0006);
+                        }
+                
+                        &:not(:has(img:target)) {
+                
+                            --row-max-height-px: calc(var(--row-height-max) * 1px);
+                
+                            max-width:  min(calc(var(--row-max-height-px) * var(--width) / var(--height)), calc(100vw - 2 * var(--gap)));
+                            max-height: var(--row-max-height-px);
+                        }
+                
+                        &:has(img:target) {
+                
+                            flex-grow:      99999999999999; 
+                            margin-bottom:  calc(var(--gap) + 1px); 
+                            width:          calc(100% - 2 * var(--gap));
+                            height:         calc(100vh - 2 * var(--gap));
+                
+                            outline: none;
+                
+                            img {
+                
+                                object-fit:         contain;
+                                object-position:    center;
+                                width:              100%;
+                                height:             100%;
                             }
                         }
                     }
